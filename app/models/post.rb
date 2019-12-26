@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :author
   validate :is_title_case 
+  before_validation :make_title_case
 
   private
 
@@ -12,6 +13,7 @@ class Post < ActiveRecord::Base
   end
 
   def make_title_case
+    binding.pry
     self.title = self.title.titlecase
   end
 end
